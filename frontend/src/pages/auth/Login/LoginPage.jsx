@@ -1,11 +1,9 @@
 import React from 'react'
-import Login from '../../../components/auth/Login'
+import Login from '../../../components/auth/Login/Login'
 
 const LoginPage = () => {
   return (
-    <div className='w-full h-screen'>
      <Login/>
-    </div>
   )
 }
 
