@@ -5,9 +5,9 @@ process.on("uncaughtException",(err)=>{
  console.log(`shutting down the server for handling uncaughtException`);
 })
 
-if (process.env.NODE_ENV !== 'Production') {
+if (process.env.NODE_ENV !== 'prod') {
     config({
-        path: 'config/.env'
+        path: '.env'
     })
 }
 console.log(process.env.PORT,"process.env.PORT");
