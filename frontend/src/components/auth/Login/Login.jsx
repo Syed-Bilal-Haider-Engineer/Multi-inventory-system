@@ -3,17 +3,30 @@ import { BsEyeSlashFill } from "react-icons/bs";
 import { CgEye } from "react-icons/cg";
 import styles from '../../../styles/styles.js';
 import { Link } from 'react-router-dom';
-import Input, { renderLabel } from '../../../CustomComponents/Input.jsx';
+import Input, { renderLabel } from '../../../common/Input.jsx';
+import useFormHook from '../../../customHook/postHook.jsx';
+
+const initialValue = {
+  email:'',
+  password:'',
+  rememberMe : true
+}
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const [form, setForm] = useState({
-    email:'',
-    password:'',
-    rememberMe : true
-  })
+  const { handleSubmit } = useFormHook();
+  const [form, setForm] = useState(initialValue)
 
   const onChange = (e) => {
-    console.log(e.target.value,"events")
+    setForm({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const resetForm = () => {
+    setForm(initialValue)
+  }
+
+  const login = ()=>{
+    e.preventDefault();
+    handleSubmit(form, resetForm,'json',`${server}/user/login-user`);
   }
   return (
     <div className='min-h-screen bg-gray-50 flex flex-col justify-center py-8 sm:px-6 lg:px-8'>
@@ -55,7 +68,9 @@ const Login = () => {
                
             </div>
             <div>
-            <button type="submit" className='group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparant text-sm font-medium bg-blue-600 hover:bg-blue-400'>Submit</button>
+            <button type="submit" className='group relative w-full 
+            h-[40px] flex justify-center py-2 px-4 border border-transparant text-sm
+             font-medium bg-blue-600 hover:bg-blue-400' onClick={login}>Submit</button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h2 className='text-black'>Not have account?</h2>
