@@ -6,5 +6,15 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [tailwindcss()],
-    },}
+    },},
+    esbuild: {
+      loader: 'jsx',
+    },
+    optimizeDeps: {
+      esbuildOptions: {
+        loader: {
+          '.js': 'jsx',
+        },
+      },
+    },
 })

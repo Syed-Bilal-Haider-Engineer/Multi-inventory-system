@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import HomePage from './pages/Home/HomePage'
 import { loadUser } from './redux/actions/user'
 import { useDispatch } from 'react-redux'
+import FAQPage from './pages/FAQs/FAQsPage'
 
 function App() {
   // const dispatch = useDispatch(); 
@@ -16,10 +17,13 @@ function App() {
   return (
     <>
        <Routes>
-        <Route path='/' Component={HomePage}/>
+        <Route path='/' exact Component={HomePage}/>
         <Route path='/login' Component={LoginPage}/>
         <Route path='/signup' Component={SignupPage}/>
         <Route path="/activation/:activation_token" Component={ActivationPage}/>
+        <Route path="/products" Component={ProductsPage}/>
+        <Route path="/best-selling" Component={BestSellingPage} />
+        <Route path="/faq" Component={FAQPage} />
         </Routes>
     </>
   )

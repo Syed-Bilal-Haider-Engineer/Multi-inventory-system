@@ -14,6 +14,7 @@ import { categoriesData, productData } from "../../static/data.jsx";
 import DropDown from './DropDown';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
+import { useSelector } from 'react-redux';
 function Header({activeHeading}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
@@ -21,14 +22,14 @@ function Header({activeHeading}) {
   const [active, setActive] = useState(false);
 
   const handleSearchChange = (e) => {
+    const { isAuthenticated, user } = useSelector((state) => state.user);
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts =
-    productData &&
-      productData.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
-      );
+    const filteredProducts = productData?.filter((product) =>
+      product.name.toLowerCase().includes(term.toLowerCase())
+    );
+    console.log(filteredProducts);
     setSearchData(filteredProducts);
   };
 
@@ -55,25 +56,26 @@ function Header({activeHeading}) {
             <input
               type="text"
               placeholder="Search Product..."
+              name='search'
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
+              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md text-black"
             />
             <AiOutlineSearch
               size={30}
               className="absolute right-2 top-1.5 cursor-pointer"
             />
-            {searchData && searchData.length > 0 && (
-            <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
-              {searchData.map((item, index) => (
-                <Link key={index} to={`/product/${item._id}`}>
+            {searchData && searchData?.length > 0 && (
+            <div className="absolute min-h-[30vh] bg-slate-50 text-black shadow-sm-2 z-[9] p-4">
+              {searchData?.map((item, index) => (
+                <Link key={index} to={`/product/${item?.id}`}>
                   <div key={index} className="w-full flex items-center py-3">
-                    <img
-                      src={item.images[0]?.url || ""}
-                      alt=""
-                      className="w-[40px] h-[40px] mr-[10px]"
-                    />
-                    <h1>{item.name}</h1>
+                      <img
+                        src={ item.image_Url && item.image_Url.length > 0 ? item.image_Url[0]?.url :''}
+                        alt="Image"
+                        className="w-[40px] h-[40px] mr-[10px]"
+                      />
+                    <h1>{item?.name}</h1>
                   </div>
                 </Link>
               ))}
@@ -152,10 +154,20 @@ function Header({activeHeading}) {
             </div>
 
             <div className={`${styles.noramlFlex}`}>
-              <div className="relative cursor-pointer mr-[15px]">
+            <div className="relative cursor-pointer mr-[15px]">
+                {isAuthenticated ? (
+                  <Link to="/profile">
+                    <img
+                      src={`${server}${user?.avatar}`}
+                      className="w-[35px] h-[35px] rounded-full"
+                      alt=""
+                    />
+                  </Link>
+                ) : (
                   <Link to="/login">
                     <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
                   </Link>
+                )}
               </div>
             </div>
           </div>

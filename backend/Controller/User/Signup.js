@@ -49,8 +49,9 @@ const addUserAccount = async (req, res, next) => {
    }
 }
 const createActivationToken = (user) => {
-   return jwt.sign({ id: user._id }, process.env.ACTIVATION_SECRET, {
+   return jwt.sign(user, process.env.ACTIVATION_SECRET, {
       expiresIn: '5m'
    });
 };
+
 export default addUserAccount;
