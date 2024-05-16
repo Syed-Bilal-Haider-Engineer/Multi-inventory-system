@@ -20,9 +20,9 @@ function Header({activeHeading}) {
   const [searchData, setSearchData] = useState(null);
   const [dropDown,setDropDown] = useState(false);
   const [active, setActive] = useState(false);
-
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  
   const handleSearchChange = (e) => {
-    const { isAuthenticated, user } = useSelector((state) => state.user);
     const term = e.target.value;
     setSearchTerm(term);
 
@@ -65,10 +65,10 @@ function Header({activeHeading}) {
               size={30}
               className="absolute right-2 top-1.5 cursor-pointer"
             />
-            {searchData && searchData?.length > 0 && (
+            {searchData?.length > 0 && (
             <div className="absolute min-h-[30vh] bg-slate-50 text-black shadow-sm-2 z-[9] p-4">
               {searchData?.map((item, index) => (
-                <Link key={index} to={`/product/${item?.id}`}>
+                <Link key={index} to={`/product/${index}`}>
                   <div key={index} className="w-full flex items-center py-3">
                       <img
                         src={ item.image_Url && item.image_Url.length > 0 ? item.image_Url[0]?.url :''}
@@ -114,12 +114,12 @@ function Header({activeHeading}) {
               className="absolute right-2 top-4 cursor-pointer text-black"
               onClick={() => setDropDown(!dropDown)}
             />
-            {dropDown && (
+            {dropDown ? (
               <DropDown
                 categoriesData={categoriesData}
                 setDropDown={setDropDown}
               />
-            )}
+            ):""}
           </div>
         </div>
           {/* navitems */}

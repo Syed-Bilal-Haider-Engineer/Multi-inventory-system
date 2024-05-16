@@ -1,6 +1,4 @@
-import React from "react";
-import styles from "../../styles/styles";
-
+import styles from "../styles/styles.js";
 const Sponsored = () => {
   const sponsors = [
     {
@@ -13,20 +11,20 @@ const Sponsored = () => {
     },
     {
       name: "LG",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/LG_logo_%282015%29.svg/2560px-LG_logo_%282015%29.svg.png",
+      logo: "https://logodix.com/logo/52181.png",
     },
     {
       name: "Apple",
-      logo: "https://www.vectorlogo.zone/logos/apple/apple-ar21.png",
+      logo: "https://pngimg.com/uploads/apple_logo/apple_logo_PNG19678.png",
     },
   ];
 
   return (
     <div className={`${styles.section} hidden sm:block bg-white py-10 px-5 mb-12 cursor-pointer rounded-xl`}>
       <div className="flex justify-between w-full">
-        {sponsors.map((sponsor, index) => (
+        {sponsors?.map((sponsor, index) => (
           <div key={index} className="flex items-start">
-            <img src={sponsor.logo} alt={sponsor.name} style={{ width: "150px", objectFit: "contain" }} />
+            <img src={sponsor.logo} alt={sponsor.name} style={{ width: "150px", height:'120px' ,objectFit: "contain" }} />
           </div>
         ))}
       </div>

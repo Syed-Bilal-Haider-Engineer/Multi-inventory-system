@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/styles";
+import styles from "../../styles/styles.js";
 import CountDown from "./CountDown";
 import { Link } from "react-router-dom";
 
@@ -15,14 +15,14 @@ const EventCard = ({ active, data }) => {
         active ? "unset" : "mb-12"
       } lg:flex p-2`}
     >
-      {data.image_Url && data.image_Url[0] && (
+      {data.image_Url?.length > 0  && (
         <div className="w-full lg:w-1/2 m-auto">
           <img src={data.image_Url[0].url} alt="" />
         </div>
       )}
       <div className="w-full lg:w-1/2 flex flex-col justify-center">
         <h2 className={styles.productTitle}>{data.name}</h2>
-        <p>{data.description}</p>
+        <p className="text-black">{data.description}</p>
         <div className="flex py-2 justify-between">
           <div className="flex">
             <h5 className="font-semibold text-lg text-red-500 pr-3 line-through">
@@ -40,10 +40,10 @@ const EventCard = ({ active, data }) => {
         <br />
         <div className="flex items-center">
           <Link to={`/product/${data._id}?isEvent=true`}>
-            <div className={`${styles.button} text-white`}>See Details</div>
+            <div className={`${styles.button} text-gray`}>See Details</div>
           </Link>
           <div
-            className={`${styles.button} text-white ml-5`}
+            className={`${styles.button} text-blue ml-5`}
             onClick={() => addToCartHandler(data)}
           >
             Add to cart

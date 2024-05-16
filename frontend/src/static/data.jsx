@@ -103,7 +103,7 @@ export const navItems = [
       ),
     },
     {
-      id: 4,
+      id: 3,
       title: "Affortable Prices",
       Description: "Get Factory direct price",
       icon: (
@@ -150,7 +150,7 @@ export const navItems = [
       ),
     },
     {
-      id: 5,
+      id: 4,
       title: "Secure Payments",
       Description: "100% protected payments",
       icon: (
@@ -229,13 +229,13 @@ export const navItems = [
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+        "https://tse1.mm.bing.net/th?id=OIP.EYAqW5p_HzCoXKq1dXvGyQHaFj&pid=Api",
     },
     {
       id: 7,
       title: "Pet Care",
       subTitle: "",
-      image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+      image_Url: "https://www.sshomecare.com/wp-content/uploads/2017/11/Pet-Cares.jpg",
     },
     {
       id: 8,
@@ -271,7 +271,7 @@ export const navItems = [
       image_Url: [
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://tse3.mm.bing.net/th?id=OIP.Mq_paS-JDYG43qoHPOmv8QHaE8&pid=Api&P=0&h=220",
         },
         {
           public_id: "test",
@@ -320,22 +320,20 @@ export const navItems = [
       rating: 5,
       total_sell: 80,
       stock: 10,
-      category:"Mobile & Tablets"
     },
     {
       id: 3,
-      category:"Computers and Laptop",
       name: "MacBook pro M2 chipset 256gb ssd 8gb ram space gray color with apple 1 year warranty",
       description:
         "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
       image_Url: [
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://tse2.mm.bing.net/th?id=OIP.YwKyrN-oD2lDm6k0AfZMJQHaHa&pid=Api&P=0&h=220",
         },
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://tse2.mm.bing.net/th?id=OIP.YwKyrN-oD2lDm6k0AfZMJQHaHa&pid=Api&P=0&h=220",
         },
       ],
       shop: {
@@ -376,7 +374,6 @@ export const navItems = [
           url: "https://www.hatchwise.com/wp-content/uploads/2022/05/amazon-logo-1024x683.png",
         },
         ratings: 4.2,
-      category:"Others"
       },
       price: 100,
       discount_price: 79,
@@ -393,7 +390,7 @@ export const navItems = [
       image_Url: [
         {
           public_id: "test",
-          url: "https://mirzacdns3.s3.ap-south-1.amazonaws.com/cache/catalog/RLV0015/2-800x800.jpg",
+          url: "https://tse4.mm.bing.net/th?id=OIP.d-7UFbAaPsT2y3dYpaKm1AHaFb&pid=Api&P=0&h=220",
         },
         {
           public_id: "test",
@@ -413,7 +410,6 @@ export const navItems = [
       rating: 5,
       total_sell: 49,
       stock: 10,
-      category:"Shoes"
     },
     {
       id: 6,
@@ -484,7 +480,7 @@ export const navItems = [
       stock: 10,
     },
     {
-      id: 7,
+      id: 8,
       name: "Gaming Headphone Asus with mutiple color and free delivery",
       description:
         "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -522,7 +518,7 @@ export const navItems = [
       stock: 10,
     },
     {
-      id: 8,
+      id: 9,
       category:"Mobile and Tablets",
       name: "Iphone 14 pro max 256 gb ssd and 8 gb ram silver colour",
       description:
@@ -551,7 +547,7 @@ export const navItems = [
       stock: 10,
     },
     {
-      id: 9,
+      id: 10,
       category:"Music and Gaming",
       name: "Gaming Headphone Asus with mutiple color and free delivery",
       description:
@@ -611,7 +607,7 @@ export const navItems = [
     },
   ];
   
-  export const footercompanyLinks = [
+  export const footerCompanyLinks = [
     {
       name: "Game & Video",
     },

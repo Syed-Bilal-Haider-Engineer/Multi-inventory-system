@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import styles from "../../styles/styles";
-import Header from '../../components/Layout/Header'
-import Footer from '../../components/Layout/Footer'
-import { productData as allProducts  } from "../../static/data";
+import styles from "../../styles/styles.js";
+import { productData as allProducts  } from "../../static/data.jsx";
+import ProductCard from "../ProductCard/ProductCard.jsx";
 
 const ProductsPage = () => {
   // Destructuring imports
@@ -29,7 +27,7 @@ const ProductsPage = () => {
         ))}
       </div>
       {filteredProducts.length === 0 && (
-        <h1 className="text-center w-full pb-[100px] text-[20px]">
+        <h1 className="text-center w-full  text-black pb-[100px] text-[20px]">
           No products Found!
         </h1>
       )}
@@ -38,12 +36,8 @@ const ProductsPage = () => {
 
   return (
     <>
-        <div>
-          <Header activeHeading={3} />
-          <br />
-          <br />
+        <div className="mt-2">
           {renderProductCards()}
-          <Footer />
         </div>
     </>
   );

@@ -1,8 +1,6 @@
-import React from "react";
-import styles from "../../../styles/styles";
 import ProductCard from "../../pages/ProductCard/ProductCard";
-
-
+import { productData } from "../../static/data.jsx";
+import styles from "../../styles/styles.js";
 const FeaturedProduct = () => {  
   return (
     <div>

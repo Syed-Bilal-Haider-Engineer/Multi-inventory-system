@@ -1,15 +1,9 @@
-import React, { useState } from "react";
-import Footer from "../../components/Layout/Footer";
-import Header from "../../components/Layout/Header";
-import styles from "../../styles/styles";
+import { useState } from "react";
+import styles from "../../styles/styles.js";
 
 const FAQPage = () => {
   return (
-    <div>
-      <Header activeHeading={5} />
       <Faq />
-      <Footer />
-    </div>
   );
 };
 

@@ -1,9 +1,7 @@
 import  { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import Header from '../../components/Layout/Header'
-import Footer from '../../components/Layout/Footer'
 import { productData as allProducts  } from "../../static/data";
 import styles from "../../styles/styles";
+import ProductCard from "../ProductCard/ProductCard";
 
 const BestSellingPage = () => {
   const [sortedProducts, setSortedProducts] = useState([]);
@@ -27,12 +25,8 @@ const BestSellingPage = () => {
 
   return (
     <>
-        <div>
-          <Header activeHeading={2} />
-          <br />
-          <br />
+        <div className="mt-6">
           {renderProductCards()}
-          <Footer />
         </div>
     </>
   );
