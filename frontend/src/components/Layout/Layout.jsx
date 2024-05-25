@@ -2,13 +2,13 @@ import React from 'react';
 import Header from './Header'; 
 import Footer from './Footer'; 
 
-const Layout = ({ activeHeading,children }) => {
-    console.log(activeHeading,"activeHeading==>")
+const Layout = ({ activeHeading,path,children }) => {
+  const isAuthPath = path === '/login' || path === '/signup';
   return (
-    <div>
-      <Header activeHeading={activeHeading} />
+    <div className='bg-[#f5f2f2]'>
+      {!isAuthPath && <Header activeHeading={activeHeading} />}
       {children}
-      <Footer />
+      {!isAuthPath && <Footer />}
     </div>
   );
 };

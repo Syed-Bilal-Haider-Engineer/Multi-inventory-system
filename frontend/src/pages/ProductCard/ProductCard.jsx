@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  AiFillHeart,
   AiFillStar,
   AiOutlineEye,
   AiOutlineHeart,
@@ -10,25 +9,33 @@ import {
 import { Link } from "react-router-dom";
 
 import ProductDetailsCard from "../../components/ProductsDetails/ProductsDetails";
+import Cart from '../../components/cart/Cart.jsx'
 import styles from "../../styles/styles.js";
+import WishList from "../../components/Wishlist/wishlist.jsx";
 
 const ProductCard = ({ data }) => {
   const [click, setClick] = useState(false);
+  const [openCart,setOpenCart] = useState(false);
   const [open, setOpen] = useState(false);
-
+  const [productId,setProductId] = useState('');
   const truncatedName = data?.name.length > 40 ? data?.name.slice(0, 40) + "..." : data?.name;
   
-  const handleHeartClick = () => {
-    setClick(!click);
+  const handleHeartClick = (click,id) => {
+    setClick(click);
+    setProductId(id);
   };
 
   const handleQuickViewClick = () => {
     setOpen(!open);
   };
-console.log("URL==>",data?.image_Url[0]?.url)
+
+  const handleCartClick = (cart,id) => {
+    setOpenCart(cart);
+    setProductId(id);
+  }
 
   return (
-    <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
+    <div className="w-full h-[370px] bg-white rounded-lg shadow-md p-3 relative cursor-pointer">
       <div className="flex justify-end"></div>
       <Link to={`/product/${data?.name}`}>
         <img
@@ -68,7 +75,7 @@ console.log("URL==>",data?.image_Url[0]?.url)
         <AiOutlineHeart
           size={22}
           className="cursor-pointer absolute right-2 top-5"
-          onClick={handleHeartClick}
+          onClick={()=> handleHeartClick(!openCart,data?.id)}
           color={click ? "red" : "#333"}
           title={click ? "Remove from wishlist" : "Add to wishlist"}
         />
@@ -82,11 +89,13 @@ console.log("URL==>",data?.image_Url[0]?.url)
         <AiOutlineShoppingCart
           size={25}
           className="cursor-pointer absolute right-2 top-24"
-          onClick={() => setClick(data?._id)}
+          onClick={()=> handleCartClick(!openCart,data?.id)}
           color="#444"
           title="Add to cart"
         />
         {open && <ProductDetailsCard setOpen={setOpen} data={data} />}
+        {openCart && <Cart id={productId} handleCartModal={handleCartClick}/>}
+        {click && <WishList id={productId} handleWishModal={handleHeartClick}/> }
       </div>
     </div>
   );

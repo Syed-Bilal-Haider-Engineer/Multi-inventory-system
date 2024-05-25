@@ -1,45 +1,57 @@
-import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import LoginPage from './pages/auth/Login/LoginPage'
-import SignupPage from './pages/auth/Signup/SignupPage'
-import ActivationPage from './pages/auth/Activation/ActivationPage'
-// import { useEffect } from 'react'
-import HomePage from './pages/Home/HomePage'
-// import { loadUser } from './redux/actions/user'
-import { useDispatch } from 'react-redux'
-import FAQPage from './pages/FAQs/FAQsPage'
-import ProductsPage from './pages/ProductsPages/ProductsPages'
-import BestSellingPage from './pages/BestSellingPage/BestSellingPage'
-import Layout from './components/Layout/Layout'
-import EventsPage from './pages/EventsPage/Events'
+import React, { Suspense, lazy } from 'react';
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import Layout from './components/Layout/Layout';
+
+const LoginPage = lazy(() => import('./pages/auth/Login/LoginPage'));
+const SignupPage = lazy(() => import('./pages/auth/Signup/SignupPage'));
+const ActivationPage = lazy(() => import('./pages/auth/Activation/ActivationPage'));
+const HomePage = lazy(() => import('./pages/Home/HomePage'));
+const FAQPage = lazy(() => import('./pages/FAQs/FAQsPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPages/ProductsPages'));
+const BestSellingPage = lazy(() => import('./pages/BestSellingPage/BestSellingPage'));
+const EventsPage = lazy(() => import('./pages/EventsPage/Events'));
+
 function App() {
-  // const dispatch = useDispatch(); 
-  // useEffect(() => {
-  //   dispatch(loadUser()); // Dispatching loadUser action
-  // }, [dispatch]);
   const routes = [
     { path: '/', component: HomePage },
     { path: '/best-selling', component: BestSellingPage },
     { path: '/products', component: ProductsPage },
-    {path: '/events', component:EventsPage},
+    { path: '/events', component: EventsPage },
     { path: '/faq', component: FAQPage },
     { path: '/login', component: LoginPage },
     { path: '/signup', component: SignupPage },
     { path: '/activation/:activation_token', component: ActivationPage },
   ];
+
   return (
     <>
-      <Routes>
-       {routes.map((route, index) => (
-          <Route 
-            key={index} 
-            path={route.path} 
-            element={<Layout activeHeading={index+1}><route.component /></Layout>} 
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              element={<Layout activeHeading={index + 1} path={route.path}><route.component /></Layout>}
+            />
+          ))}
+        </Routes>
+      </Suspense>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
       />
-        ))}
-      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
