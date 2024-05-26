@@ -1,5 +1,5 @@
-import User from "../../Model/user";
-import ErrorHandler from "../../utils/ErrorHandler";
+import User from "../../Model/user.js";
+import ErrorHandler from "../../utils/ErrorHandler.js";
 
 // load user
   const getUser = async(req, res, next) =>{

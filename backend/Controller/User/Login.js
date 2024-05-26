@@ -1,6 +1,6 @@
-import User from "../../Model/user";
-import { ErrorHandler } from '../utils/errorHandler'; // Import ErrorHandler if not already imported
-import sendToken from './sendToken'; // Import sendToken if not already imported
+import User from "../../Model/user.js";
+import ErrorHandler from "../../utils/ErrorHandler.js"; // Import ErrorHandler if not already imported
+import sendToken from '../../utils/jwtToken.js'; // Import sendToken if not already imported
 
 const login = async (req, res, next) => { // async keyword should be before (req, res, next)
   try {

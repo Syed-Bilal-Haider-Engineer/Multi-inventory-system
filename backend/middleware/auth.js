@@ -1,5 +1,6 @@
-import ErrorHandler from "../utiles/ErrorHandler";
-import catchAsyncError from "./catchAsyncError";
+import ErrorHandler from "../utils/ErrorHandler.js";
+import catchAsyncError from "./catchAsyncError.js";
+
 const isAuthenticated = catchAsyncError(async(req,res,next) => {
     const {token} = req.cookies;
 

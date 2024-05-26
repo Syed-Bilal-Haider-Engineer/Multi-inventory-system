@@ -1,33 +1,27 @@
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 import { config } from 'dotenv';
+
 if (process.env.NODE_ENV !== 'prod') {
-    config({
-        path: '.env'
-    })
+    config({ path: '.env' });
 }
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 const sendMail = async (options) => {
+    const msg = {
+        to: options.email, // Change to your recipient
+        from: 'bilal.haider@dataqhealth.com', // Change to your verified sender
+        subject: options.subject,
+        text: options.message,
+        html: `<p>${options.message}</p>`, // Use the actual message content
+    };
+
     try {
-        const transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: process.env.SMTP_PORT,
-            service: process.env.SMTP_SERVICE,
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD
-            }
-        });
-
-        const mailOptions = {
-            from: process.env.SMTP_USER, 
-            to: options.email,          
-            subject: options.subject, 
-            text: options.message    
-        };
-
-        await transporter.sendMail(mailOptions);
-        console.log('Email sent successfully');
+        const response = await sgMail.send(msg);
+        console.log('Email sent successfully:', response);
     } catch (error) {
-        console.error('Failed to send email:', error);
+        console.error('Error sending email:', error);
+        throw new Error('Failed to send email'); // Re-throw to handle in calling function
     }
 };
 
