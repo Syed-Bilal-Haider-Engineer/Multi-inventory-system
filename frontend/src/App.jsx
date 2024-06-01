@@ -12,6 +12,7 @@ const FAQPage = lazy(() => import('./pages/FAQs/FAQsPage'));
 const ProductsPage = lazy(() => import('./pages/ProductsPages/ProductsPages'));
 const BestSellingPage = lazy(() => import('./pages/BestSellingPage/BestSellingPage'));
 const EventsPage = lazy(() => import('./pages/EventsPage/Events'));
+const productDetailsPage = lazy(()=> import('./pages/ProductsDetailsPage/ProductDetails'));
 
 function App() {
   const routes = [
@@ -23,6 +24,7 @@ function App() {
     { path: '/login', component: LoginPage },
     { path: '/signup', component: SignupPage },
     { path: '/activation/:activation_token', component: ActivationPage },
+    { path: '/product/:id',component: productDetailsPage}
   ];
 
   return (

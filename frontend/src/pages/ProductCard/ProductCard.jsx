@@ -37,7 +37,7 @@ const ProductCard = ({ data }) => {
   return (
     <div className="w-full h-[370px] bg-white rounded-lg shadow-md p-3 relative cursor-pointer">
       <div className="flex justify-end"></div>
-      <Link to={`/product/${data?.name}`}>
+      <Link to={`/product/${data?.id}`}>
         <img
           src={`${data.image_Url && data.image_Url[0]?.url}`}
           alt=""
@@ -47,7 +47,7 @@ const ProductCard = ({ data }) => {
       <Link to='/'>
         <h5 className={`${styles.shop_name}`}>{data.shop.name}</h5>
       </Link>
-      <Link to={`/product/${data?.name}`}>
+      <Link to={`/product/${data?.id}`}>
         <h4 className="pb-3 font-[500] text-black">{truncatedName}</h4>
         <div className="flex">
           {[...Array(3)].map((_, index) => (
