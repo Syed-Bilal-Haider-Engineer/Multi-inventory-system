@@ -1,14 +1,14 @@
-import mongoose from "mongoose"
-import { config } from 'dotenv';
-const connectDatabase = async()=>{
-    if (process.env.NODE_ENV !== 'prod') {
-        config({
-            path: '.env'
-        })
-    }
-   await mongoose.connect(process.env.MONGODB_URI).then((data)=>{{
-        console.log(`mongo connected with server  & ${process.env.MONGODB_URI}`)
-    }})
-}
+const mongoose = require("mongoose");
 
-export default connectDatabase;
+const connectDatabase = () => {
+  mongoose
+    .connect(process.env.DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((data) => {
+      console.log(`mongod connected with server: ${data.connection.host}`);
+    });
+};
+
+module.exports = connectDatabase;

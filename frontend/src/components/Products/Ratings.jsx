@@ -6,7 +6,7 @@ const Ratings = ({ rating }) => {
   const stars = [];
 
   for (let i = 1; i <= 5; i++) {
-    if (i <= Math.floor(rating)) {
+    if (i <= rating) {
       stars.push(
         <AiFillStar
           key={i}
@@ -19,8 +19,8 @@ const Ratings = ({ rating }) => {
       stars.push(
         <BsStarHalf
           key={i}
-          size={20}
-          color="#f6b100"
+          size={17}
+          color="#f6ba00"
           className="mr-2 cursor-pointer"
         />
       );
@@ -29,14 +29,13 @@ const Ratings = ({ rating }) => {
         <AiOutlineStar
           key={i}
           size={20}
-          color="#f6b100"
+          color="#f6ba00"
           className="mr-2 cursor-pointer"
         />
       );
     }
   }
-
-  return <div className="flex">{stars}</div>;
+  return <div className="flex"> {stars}</div>;
 };
 
 export default Ratings;
