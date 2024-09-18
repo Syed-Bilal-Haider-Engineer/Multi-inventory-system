@@ -1,4 +1,3 @@
-=======
 # Full-Stack Inventory Management App
 
 This is a full-stack inventory management application built using the MERN stack. It allows users to manage and track inventory items efficiently. The application includes both frontend and backend components, providing a comprehensive solution for inventory management.
