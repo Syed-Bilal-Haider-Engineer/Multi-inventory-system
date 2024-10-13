@@ -28,8 +28,8 @@ const Singup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    axios
+  console.log("name, email, password, avatar==>", name, email, password)
+   await axios
       .post(`${server}/user/create-user`, { name, email, password, avatar })
       .then((res) => {
         toast.success(res.data.message);

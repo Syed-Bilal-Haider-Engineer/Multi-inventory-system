@@ -5,12 +5,13 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-app.use(cors({
-  origin: ['https://eshop-tutorial-pyri.vercel.app',],
-  credentials: true
-}));
-
 app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true
+ }));
+
 app.use(cookieParser());
 app.use("/test", (req, res) => {
   res.send("Hello world!");
@@ -48,7 +49,7 @@ app.use("/api/v2/coupon", coupon);
 app.use("/api/v2/payment", payment);
 app.use("/api/v2/withdraw", withdraw);
 
-// it's for ErrorHandling
+// Error Handling
 app.use(ErrorHandler);
 
 module.exports = app;

@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-
-=======
 # Full-Stack Inventory Management App
 
 This is a full-stack inventory management application built using the MERN stack. It allows users to manage and track inventory items efficiently. The application includes both frontend and backend components, providing a comprehensive solution for inventory management.
 
 ## Project Overview
 
-This project  with Create React App, Node  and incorporates modern technologies to ensure a seamless user experience and robust functionality.
+This project  with Create React App, and Node  and incorporates modern technologies to ensure a seamless user experience and robust functionality.
 
 ## Frontend
 
@@ -29,7 +26,5 @@ The backend of this application is developed using:
 To get started with the project, follow these steps:
 
 1. **Clone the repository:**
-
+  https://github.com/Syed-Bilal-Haider-Engineer/Multi-inventory-system
    ```bash
-https://github.com/Syed-Bilal-Haider-Engineer/Multi-inventory-system
->>>>>>> 33dda17d50db133fc06ae23e60394577a0dd36bd

@@ -12,9 +12,17 @@ const BestSellingPage = () => {
   const {allProducts,isLoading} = useSelector((state) => state.products);
 
   useEffect(() => {
-    const allProductsData = allProducts ? [...allProducts] : [];
-    const sortedData = allProductsData?.sort((a,b) => b.sold_out - a.sold_out); 
-    setData(sortedData);
+    const fetchProducts = async () => {
+      try {
+        const allProductsData = allProducts ? [...allProducts] : [];
+        const sortedData = allProductsData.sort((a, b) => b.sold_out - a.sold_out); 
+        setData(sortedData);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+
+    fetchProducts();
   }, [allProducts]);
 
   return (
